@@ -12,6 +12,10 @@
         <button class="bg-sky-500 my-2 mx-2 text-white text-black px-3 py-2 h-10" type="submit">Home</button>
     </a>
 
+    <a href="{{ url('/grupo_economicos') }}">
+        <button class="bg-sky-500 my-2 mx-2 text-white text-black px-3 py-2 h-10" type="submit">Grupo Economico</button>
+    </a>
+
     <div
         class="flex justify-center  items-center content-center flex-col align-items-center min-h-screen border-2 border-black">
         <div class="w-1/4">
