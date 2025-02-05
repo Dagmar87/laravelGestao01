@@ -31,17 +31,17 @@ class GrupoEconomicoController extends Controller
 
     public function edit(string $id)
     {
-        $grupoEconomico = GrupoEconomico::findOrFail($id);
-        return view("grupo_economicos.edit", compact("grupoEconomico"));
+        $grupo_economico = GrupoEconomico::findOrFail($id);
+        return view("grupo_economicos.edit", compact("grupo_economico"));
     }
 
     public function update(Request $request, string $id)
     {
-        $grupoEconomico = GrupoEconomico::findOrFail($id);
+        $grupo_economico = GrupoEconomico::findOrFail($id);
         $validatedData = $request->validate([
             "nome" => "required|string|max:255",
         ]);
-        $grupoEconomico->update($validatedData);
+        $grupo_economico->update($validatedData);
         return redirect()
             ->route("grupo_economicos.index")
             ->with("success", "Grupo Economico atualizado com sucesso.");
@@ -49,8 +49,8 @@ class GrupoEconomicoController extends Controller
 
     public function destroy(string $id)
     {
-        $grupoEconomico = GrupoEconomico::findOrFail($id);
-        $grupoEconomico->delete();
+        $grupo_economico = GrupoEconomico::findOrFail($id);
+        $grupo_economico->delete();
         return redirect()
             ->route("grupo_economicos.index")
             ->with("success", "Grupo Economico excluido com sucesso.");

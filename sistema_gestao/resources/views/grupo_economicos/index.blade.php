@@ -4,6 +4,7 @@
 <head>
     <title>Lista de Grupo Economico</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 
 </head>
 
@@ -25,26 +26,24 @@
                     href="{{ route('grupo_economicos.create') }}">Create</a>
 
             </div>
-            <ul>
-                @foreach ($grupo_economicos as $grupo_economico)
-                    <li class="my-3 list-none bg-white px-10 py-3">
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-col ">
-
-                                <p>
-                                    {{ ucwords($grupo_economico->nome) }}
-                                </p>
-
-                                <p>
-                                    {{ ucwords($grupo_economico->created_at) }}
-                                </p>
-
-                                <p>
-                                    {{ ucwords($grupo_economico->updated_at) }}
-                                </p>
-                            </div>
-                            <div class="flex items-center">
-
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data de Criação</th>
+                        <th>Última Atualização</th>
+                        <th width="280px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($grupo_economicos as $grupo_economico)
+                        <tr>
+                            <td>{{ $grupo_economico->id }}</td>
+                            <td>{{ $grupo_economico->nome }}</td>
+                            <td>{{ $grupo_economico->created_at }}</td>
+                            <td>{{ $grupo_economico->updated_at }}</td>
+                            <td>
                                 <a class="ms-3 bg-sky-500 text-white text-black px-3 py-2 h-10"
                                     href="{{ route('grupo_economicos.edit', $grupo_economico->id) }}">Editar</a>
                                 <form method="post" class="pt-4s"
@@ -54,12 +53,11 @@
                                     <button type="submit"
                                         class="ms-3  bg-red-500 text-white text-black place-self-center  px-3 py-2">Excluir</button>
                                 </form>
-                            </div>
-
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>            
         </div>
     </div>
 </body>
