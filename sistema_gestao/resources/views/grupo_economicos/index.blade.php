@@ -36,11 +36,11 @@
                                 </p>
 
                                 <p>
-                                    {{ ucwords($grupo_economico->dataDeCriacao) }}
+                                    {{ ucwords($grupo_economico->created_at) }}
                                 </p>
 
                                 <p>
-                                    {{ ucwords($grupo_economico->ultimaAtualizacao) }}
+                                    {{ ucwords($grupo_economico->updated_at) }}
                                 </p>
                             </div>
                             <div class="flex items-center">

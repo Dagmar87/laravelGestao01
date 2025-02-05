@@ -22,8 +22,6 @@ class GrupoEconomicoController extends Controller
     {
         $validatedData = $request->validate([
             "nome" => "required|string|max:255",
-            "dataDeCriacao" => "required|date",
-            "ultimaAtualizacao" => "required|date",
         ]);
         GrupoEconomico::create($validatedData);
         return redirect()
@@ -42,8 +40,6 @@ class GrupoEconomicoController extends Controller
         $grupoEconomico = GrupoEconomico::findOrFail($id);
         $validatedData = $request->validate([
             "nome" => "required|string|max:255",
-            "dataDeCriacao" => "required|date",
-            "ultimaAtualizacao" => "required|date",
         ]);
         $grupoEconomico->update($validatedData);
         return redirect()
