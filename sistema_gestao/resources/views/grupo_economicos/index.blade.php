@@ -23,7 +23,7 @@
             <div class="flex justify-between w-full">
                 <h1 class="text-xl font-bold">Lista de Grupo Economico</h1>
                 <a class="ms-3 bg-sky-500 text-white text-black px-3 py-2"
-                    href="{{ route('grupo_economicos.create') }}">Create</a>
+                    href="{{ route('grupo_economicos.create') }}">Criar</a>
 
             </div>
             <table class="table table-bordered">
