@@ -32,14 +32,9 @@
                         name="nome" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
-                    <x-adminlte-select name="grupo_economico_id" label="Grupo Economico:" enable-old-support>
-                        <option class="d-none" value="{{ $bandeira->grupo_economico_id }}">Selecione um Grupo Economico</option>
-                        @forelse ($grupo_economicos as $grupo_economico)
-                            <option value="{{ $grupo_economico->id }}">{{ $grupo_economico->nome }}</option>
-                        @empty
-                            <option value="">Nenhum Grupo Economico cadastrado</option>
-                        @endforelse
-                    </x-adminlte-select>
+                    <label for="grupo_economico_id">Grupo Economico</label>
+                    <input value="{{ $bandeira->grupo_economico_id }}" class="px-2 h-10 border border-black" type="text"
+                        name="grupo_economico_id" required><br>
                 </div>
                 <button class="bg-sky-500 text-white text-black px-3 py-2 h-10" type="submit">Atualizar</button>
             </form>
