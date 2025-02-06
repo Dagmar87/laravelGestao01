@@ -38,14 +38,7 @@
                 </div>
                 <div class="flex flex-col gep-y-2">
                     <label for="bandeira_id">Bandeira:</label>
-                    <select name="bandeira_id" id="bandeira_id" class="custom-select">
-                        <option selected>Selecione um Grupo Economico</option>
-                        @foreach ($bandeiras as $bandeira => $value)
-                            <option value="{{ $value->id }}">
-                                {{ ucfirst(trans(strtolower($value->nome)))}}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input class="px-2 h-10 border border-black" type="text" name="bandeira_id" required><br>
                 </div>
                 <button class="bg-sky-500 text-white text-black px-3 py-2 h-10" type="submit">Criar</button>
             </form>
