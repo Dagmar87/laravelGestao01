@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bandeiras', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('nome'); 
-            $table->unsignedBigInteger('grupo_economico_id');
-            $table->foreign('grupo_economico_id')->references('id')->on('grupo_economicos')->onDelete('cascade');
+            $table->integer('grupo_economico_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('bandeiras', function($table){
+            $table->foreign('grupo_economico_id')->references('id')->on('grupo_economicos');
         });
     }
 

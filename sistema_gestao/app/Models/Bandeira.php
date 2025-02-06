@@ -13,6 +13,6 @@ class Bandeira extends Model
 
     public function grupo_economico()
     {
-        return $this->belongsTo('App\Models\GrupoEconomico');
+        return $this->belongsTo(GrupoEconomico::class);
     }
 }
