@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('bandeiras', function (Blueprint $table) {
             $table->id();
             $table->string('nome'); 
-            $table->integer('grupo_economico_id')->unsigned();
-            $table->foreign('grupo_economico_id')->references('id')->on('grupo_economicos');
+            $table->unsignedBigInteger('grupo_economico_id');
+            $table->foreign('grupo_economico_id')->references('id')->on('grupo_economicos')->onDelete('cascade');
             $table->timestamps();
         });
     }
