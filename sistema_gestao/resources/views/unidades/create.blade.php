@@ -25,15 +25,15 @@
             <form method="post" action="{{ route('unidades.store') }}">
                 @csrf
                 <div class="flex flex-col gep-y-2">
-                    <label for="nome">Nome Fantasia:</label>
+                    <label for="nome_fantasia">Nome Fantasia:</label>
                     <input class="px-2 h-10 border border-black" type="text" name="nome_fantasia" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
-                    <label for="nome">Razão Social:</label>
+                    <label for="razao_social">Razão Social:</label>
                     <input class="px-2 h-10 border border-black" type="text" name="razao_social" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
-                    <label for="nome">CNPJ:</label>
+                    <label for="cnpj">CNPJ:</label>
                     <input class="px-2 h-10 border border-black" type="number" name="cnpj" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
