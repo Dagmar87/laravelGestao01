@@ -23,7 +23,7 @@ class UnidadeController extends Controller
         $validatedData = $request->validate([
             "nome_fantasia" => "required|string|max:255",
             "razao_social" => "required|string|max:128",
-            "cnpj" => "required|integer|max:14",
+            "cnpj" => "required|max:20",
             "bandeira_id" => "required|exists:bandeiras,id",
         ]);
         Unidade::create($validatedData);
@@ -44,7 +44,7 @@ class UnidadeController extends Controller
         $validatedData = $request->validate([
             "nome_fantasia" => "required|string|max:255",
             "razao_social" => "required|string|max:128",
-            "cnpj" => "required|integer|max:14",
+            "cnpj" => "required|max:20",
             "bandeira_id" => "required|exists:bandeiras,id",
         ]);
         $unidade->update($validatedData);

@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex flex-col gep-y-2">
                     <label for="cnpj">CNPJ:</label>
-                    <input class="px-2 h-10 border border-black" type="number" name="cnpj" required><br>
+                    <input class="px-2 h-10 border border-black" type="text" name="cnpj" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
                     <label for="bandeira_id">Bandeira:</label>

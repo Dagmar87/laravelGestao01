@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nome'); 
             $table->string('email');
-            $table->integer('cpf');
+            $table->bigInteger('cpf');
             $table->integer('unidade_id')->unsigned()->nullable();
             $table->timestamps();
         });

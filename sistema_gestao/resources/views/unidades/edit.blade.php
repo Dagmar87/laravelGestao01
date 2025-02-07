@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex flex-col gep-y-2">
                     <label for="cnpj">CNPJ:</label>
-                    <input value="{{ $unidade->cnpj }}" class="px-2 h-10 border border-black" type="number"
+                    <input value="{{ $unidade->cnpj }}" class="px-2 h-10 border border-black" type="text"
                         name="cnpj" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">

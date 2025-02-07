@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->string('nome_fantasia');
             $table->string('razao_social');
-            $table->integer('cnpj');
+            $table->bigInteger('cnpj');
             $table->integer('bandeira_id')->unsigned()->nullable();
             $table->timestamps();
         });
