@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('colaboradors', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nome'); 
+            $table->string('email');
+            $table->integer('cpf');
+            $table->integer('unidade_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('colaboradors', function ($table) {
+            $table->foreign('unidade_id')->references('id')->on('unidades');
         });
     }
 
