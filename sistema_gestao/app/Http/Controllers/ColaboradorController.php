@@ -23,7 +23,7 @@ class ColaboradorController extends Controller
         $validatedData = $request->validate([
             "nome" => "required|string|max:255",
             "email" => "required|string|max:255",
-            "cpf" => "required|integer|max:11",
+            "cpf" => "required|max:11",
             "unidade_id" => "required|exists:unidades,id",
         ]);
         Colaborador::create($validatedData);
@@ -44,7 +44,7 @@ class ColaboradorController extends Controller
         $validatedData = $request->validate([
             "nome" => "required|string|max:255",
             "email" => "required|string|max:255",
-            "cpf" => "required|integer|max:11",
+            "cpf" => "required|max:11",
             "unidade_id" => "required|exists:unidades,id",
         ]);
         $colaborador->update($validatedData);

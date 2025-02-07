@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex flex-col gep-y-2">
                     <label for="cpf">CPF:</label>
-                    <input value="{{ $colaborador->cpf }}" class="px-2 h-10 border border-black" type="number"
+                    <input value="{{ $colaborador->cpf }}" class="px-2 h-10 border border-black" type="text"
                         name="cpf" required><br>
                 </div>
                 <div class="flex flex-col gep-y-2">
