@@ -7,11 +7,5 @@ export default defineConfig({
             input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
-    ],
-    // Other Vite config options...
-    esbuild: {
-        target: "esnext",
-        platform: "linux",
-    },
-    // Other Vite config options...
+    ],    
 });
