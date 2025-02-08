@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BandeiraController;
+use App\Http\Controllers\ColaboradorController;
+use App\Http\Controllers\GrupoEconomicoController;
+use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +22,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('/grupo_economicos', GrupoEconomicoController::class);
+Route::resource('/bandeiras', BandeiraController::class);
+Route::resource('/unidades', UnidadeController::class);
+Route::resource('/colaboradors', ColaboradorController::class);
