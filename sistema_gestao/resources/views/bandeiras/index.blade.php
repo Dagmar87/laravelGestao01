@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-200">
-    <a href="{{ url('/') }}">
+    <a href="{{ url('home') }}">
         <button class="bg-sky-500 my-2 mx-2 text-white text-black px-3 py-2 h-10" type="submit">Home</button>
     </a>
 

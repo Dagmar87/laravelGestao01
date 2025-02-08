@@ -30,7 +30,7 @@
                     "name": "Colorlib"
                 }
             ],
-            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "description": "AdminLTE - admin control panel and home that's based on Bootstrap 4",
             "homepage": "https://adminlte.io/",
             "keywords": [
                 "JS",
