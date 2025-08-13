@@ -2,57 +2,119 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\GrupoEconomico;
+use App\Http\Requests\GrupoEconomicoRequest;
+use Illuminate\Http\Request;
 
 class GrupoEconomicoController extends Controller
 {
+    /**
+     * Exibe uma listagem dos recursos.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $grupo_economicos = GrupoEconomico::all();
-        return view("grupo_economicos.index", compact("grupo_economicos"));
+        $gruposEconomicos = GrupoEconomico::orderBy('nome')->paginate(10);
+        return view('grupo_economicos.index', compact('gruposEconomicos'));
     }
 
+    /**
+     * Mostra o formulário para criar um novo recurso.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view("grupo_economicos.create");
+        return view('grupo_economicos.create');
     }
 
-    public function store(Request $request)
+    /**
+     * Armazena um recurso recém-criado no armazenamento.
+     *
+     * @param  \App\Http\Requests\GrupoEconomicoRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(GrupoEconomicoRequest $request)
     {
-        $validatedData = $request->validate([
-            "nome" => "required|string|max:255",
-        ]);
-        GrupoEconomico::create($validatedData);
-        return redirect()
-            ->route("grupo_economicos.index")
-            ->with("success", "Grupo Economico criado com sucesso.");
+        try {
+            $grupoEconomico = GrupoEconomico::create($request->validated());
+            return redirect()
+                ->route('grupo_economicos.index')
+                ->with('success', 'Grupo econômico criado com sucesso!');
+        } catch (\Exception $e) {
+            return back()
+                ->withInput()
+                ->with('error', 'Erro ao criar grupo econômico: ' . $e->getMessage());
+        }
     }
 
-    public function edit(string $id)
+    /**
+     * Exibe o recurso especificado.
+     *
+     * @param  \App\Models\GrupoEconomico  $grupoEconomico
+     * @return \Illuminate\Http\Response
+     */
+    public function show(GrupoEconomico $grupoEconomico)
     {
-        $grupo_economico = GrupoEconomico::findOrFail($id);
-        return view("grupo_economicos.edit", compact("grupo_economico"));
+        return view('grupo_economicos.show', compact('grupoEconomico'));
     }
 
-    public function update(Request $request, string $id)
+    /**
+     * Mostra o formulário para editar o recurso especificado.
+     *
+     * @param  \App\Models\GrupoEconomico  $grupoEconomico
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(GrupoEconomico $grupoEconomico)
     {
-        $grupo_economico = GrupoEconomico::findOrFail($id);
-        $validatedData = $request->validate([
-            "nome" => "required|string|max:255",
-        ]);
-        $grupo_economico->update($validatedData);
-        return redirect()
-            ->route("grupo_economicos.index")
-            ->with("success", "Grupo Economico atualizado com sucesso.");
+        return view('grupo_economicos.edit', compact('grupoEconomico'));
     }
 
-    public function destroy(string $id)
+    /**
+     * Atualiza o recurso especificado no armazenamento.
+     *
+     * @param  \App\Http\Requests\GrupoEconomicoRequest  $request
+     * @param  \App\Models\GrupoEconomico  $grupoEconomico
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(GrupoEconomicoRequest $request, GrupoEconomico $grupoEconomico)
     {
-        $grupo_economico = GrupoEconomico::findOrFail($id);
-        $grupo_economico->delete();
-        return redirect()
-            ->route("grupo_economicos.index")
-            ->with("success", "Grupo Economico excluido com sucesso.");
+        try {
+            $grupoEconomico->update($request->validated());
+            return redirect()
+                ->route('grupo_economicos.index')
+                ->with('success', 'Grupo econômico atualizado com sucesso!');
+        } catch (\Exception $e) {
+            return back()
+                ->withInput()
+                ->with('error', 'Erro ao atualizar grupo econômico: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Remove o recurso especificado do armazenamento.
+     *
+     * @param  \App\Models\GrupoEconomico  $grupoEconomico
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(GrupoEconomico $grupoEconomico)
+    {
+        try {
+            if ($grupoEconomico->bandeiras()->exists()) {
+                return redirect()
+                    ->route('grupo_economicos.index')
+                    ->with('error', 'Não é possível excluir o grupo econômico pois existem bandeiras vinculadas a ele.');
+            }
+            
+            $grupoEconomico->delete();
+            return redirect()
+                ->route('grupo_economicos.index')
+                ->with('success', 'Grupo econômico excluído com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('grupo_economicos.index')
+                ->with('error', 'Erro ao excluir grupo econômico: ' . $e->getMessage());
+        }
     }
 }
